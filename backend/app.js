@@ -3,6 +3,8 @@ const express = require("express");
 // cross origin resource sharing // allows another app to make request to server
 const cors = require("cors");
 
+const vendorsController = require("./controllers/vendorController");
+
 // create the server app by invoking express
 const app = express();
 
@@ -20,6 +22,8 @@ app.get("/", (req, res) => {
 
     res.status(200).send("<h1>StreetBites Server</h1>");
 })
+
+app.use("/vendors", vendorsController);
 
 // not found route
 app.get("*", (req, res) => {
