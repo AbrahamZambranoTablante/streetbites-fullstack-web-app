@@ -28,4 +28,22 @@ const getVendorsByCuisine = async (type) => {
     }
 }
 
-module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine }
+const getVendorsByBorough = async (borough) => {
+    try {
+        const vendorsByBorough = await db.any("SELECT * FROM vendors WHERE borough ILIKE $1", borough)
+        return vendorsByBorough;
+    } catch (error) {
+        return error;
+    }
+}
+
+const getVendorsByNeighborhood = async (borough, neighborhood) => {
+    try {
+        const vendorsByNeighborhood = await db.any("SELECT * FROM vendors WHERE borough ILIKE $1 AND neighborhood ILIKE $2", [borough, neighborhood])
+        return vendorsByNeighborhood;
+    } catch (error) {
+        return error;
+    }
+}
+
+module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood }
