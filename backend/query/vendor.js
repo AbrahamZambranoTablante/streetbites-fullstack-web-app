@@ -73,6 +73,15 @@ const updateVendor = async (id, vendorUpdate) => {
     } catch (error) {
         return error
     }
-} 
+}
 
-module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor }
+const deleteVendor = async (id) => {
+    try {
+        const removedVendor = await db.one("DELETE FROM vendors WHERE id = $1 RETURNING *", id)
+        return removedVendor
+    } catch (error) {
+        return error
+    }
+}
+
+module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor, deleteVendor }

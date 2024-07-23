@@ -1,6 +1,6 @@
 const express = require("express");
 const vendors = express.Router();
-const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor } = require("../query/vendor.js");
+const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor, deleteVendor } = require("../query/vendor.js");
 const { getAveragePrice } = require("./helperFunctions.js")
 
 vendors.get("/", async (req, res) => {
@@ -82,9 +82,18 @@ vendors.put("/:id/edit", async (req, res) => {
         const updatedVendor = await updateVendor(id, req.body);
         res.status(200).json(updatedVendor);
     } catch {
-        res.status(404).json({error: "no vendors found"});
+        res.status(404).json({error: "no vendor found"});
     }
 })
 
+vendors.delete("/:id", async (req, res) => {
+    const { id } = req.params;
+    const removedVendor = await deleteVendor(id);
+    if (removedVendor) {
+        res.status(200).json(removedVendor);
+    } else {
+        res.status(404).json({error: "no vendor found"});
+    }
+})
 
 module.exports = vendors;
