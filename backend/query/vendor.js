@@ -65,4 +65,14 @@ const createVendor = async (vendor) => {
     }
 }
 
-module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor }
+const updateVendor = async (id, vendorUpdate) => {
+    const { name, phone, cuisine, address, neighborhood, borough, description, price_range, menu_photo, vendor_photo, vegan, likes } = vendorUpdate
+    try {
+        const updatedVendor = await db.one("UPDATE vendors SET name = $1, phone = $2, cuisine = $3, address = $4, neighborhood = $5, borough = $6, description= $7, price_range = $8, menu_photo = $9, vendor_photo = $10, vegan = $11, likes = $12 WHERE id = $13 RETURNING *", [ name, phone, cuisine, address, neighborhood, borough, description, price_range, menu_photo, vendor_photo, vegan, likes, id ]);
+        return updatedVendor;
+    } catch (error) {
+        return error
+    }
+} 
+
+module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor }
