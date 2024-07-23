@@ -10,4 +10,13 @@ const getAllVendors = async () => {
     }
 }
 
-module.exports = { getAllVendors }
+const getTopFavorites = async () => {
+    try {
+        const topFavorites = await db.any("SELECT * FROM vendors ORDER BY likes DESC LIMIT 8")
+        return topFavorites;
+    } catch (error) {
+        return error;
+    }
+}
+
+module.exports = { getAllVendors, getTopFavorites }
