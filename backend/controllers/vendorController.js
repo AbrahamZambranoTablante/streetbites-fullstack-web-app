@@ -1,6 +1,6 @@
 const express = require("express");
 const vendors = express.Router();
-const { getAllVendors, getTopFavorites } = require("../query/vendor.js");
+const { getAllVendors, getTopFavorites, getVendorsByCuisine } = require("../query/vendor.js");
 const { getAveragePrice } = require("./helperFunctions.js")
 
 vendors.get("/", async (req, res) => {
@@ -26,6 +26,16 @@ vendors.get("/cheapest", async (req, res) => {
     const cheapestVendors = allVendors.sort((a,b) => getAveragePrice(a.price_range) - getAveragePrice(b.price_range));
     if(cheapestVendors[0]){
         res.status(200).json(cheapestVendors);
+    } else {
+        res.status(404).json({error: "no vendors found"});
+    }
+})
+
+vendors.get("/bycuisine/:type", async (req, res) => {
+    const {type} = req.params;
+    const vendorsByCuisine = await getVendorsByCuisine(type);
+    if(vendorsByCuisine[0]){
+        res.status(200).json(vendorsByCuisine);
     } else {
         res.status(404).json({error: "no vendors found"});
     }

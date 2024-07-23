@@ -19,4 +19,13 @@ const getTopFavorites = async () => {
     }
 }
 
-module.exports = { getAllVendors, getTopFavorites }
+const getVendorsByCuisine = async (type) => {
+    try {
+        const vendorsByCuisine = await db.any("SELECT * FROM vendors WHERE cuisine ILIKE $1", type)
+        return vendorsByCuisine;
+    } catch (error){
+        return error;
+    }
+}
+
+module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine }
