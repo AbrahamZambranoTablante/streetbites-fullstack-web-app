@@ -1,6 +1,6 @@
 const express = require("express");
 const vendors = express.Router();
-const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor } = require("../query/vendor.js");
+const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor } = require("../query/vendor.js");
 const { getAveragePrice } = require("./helperFunctions.js")
 
 vendors.get("/", async (req, res) => {
@@ -69,6 +69,11 @@ vendors.get("/location/:borough/:neighborhood", async (req, res) => {
     } else {
         res.status(404).json({error: "no vendors found"});
     }
+})
+
+vendors.post("/", async (req, res) => {
+    const incomingVendor = await createVendor(req.body)
+    res.status(200).json(incomingVendor)
 })
 
 
