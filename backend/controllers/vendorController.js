@@ -1,6 +1,6 @@
 const express = require("express");
 const vendors = express.Router();
-const { getAllVendors, getTopFavorites, getVendorsByCuisine } = require("../query/vendor.js");
+const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood } = require("../query/vendor.js");
 const { getAveragePrice } = require("./helperFunctions.js")
 
 vendors.get("/", async (req, res) => {
@@ -36,6 +36,26 @@ vendors.get("/bycuisine/:type", async (req, res) => {
     const vendorsByCuisine = await getVendorsByCuisine(type);
     if(vendorsByCuisine[0]){
         res.status(200).json(vendorsByCuisine);
+    } else {
+        res.status(404).json({error: "no vendors found"});
+    }
+})
+
+vendors.get("/:borough", async (req, res) => {
+    const {borough} = req.params;
+    const vendorsByBorough = await getVendorsByBorough(borough);
+    if(vendorsByBorough[0]){
+        res.status(200).json(vendorsByBorough)
+    } else {
+        res.status(404).json({error: "no vendors found"});
+    }
+})
+
+vendors.get("/:borough/:neighborhood", async (req, res) => {
+    const {borough, neighborhood} = req.params;
+    const vendorsByNeighborhood = await getVendorsByNeighborhood(borough, neighborhood);
+    if(vendorsByNeighborhood[0]){
+        res.status(200).json(vendorsByNeighborhood);
     } else {
         res.status(404).json({error: "no vendors found"});
     }
