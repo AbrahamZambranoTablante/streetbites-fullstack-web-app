@@ -46,4 +46,13 @@ const getVendorsByNeighborhood = async (borough, neighborhood) => {
     }
 }
 
-module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood }
+const getOneVendor = async (id) => {
+    try {
+        const oneVendor = await db.one("SELECT * FROM vendors WHERE id = $1", id);
+        return oneVendor
+    } catch (error) {
+        return error;
+    }
+}
+
+module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor }

@@ -1,6 +1,6 @@
 const express = require("express");
 const vendors = express.Router();
-const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood } = require("../query/vendor.js");
+const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor } = require("../query/vendor.js");
 const { getAveragePrice } = require("./helperFunctions.js")
 
 vendors.get("/", async (req, res) => {
@@ -41,8 +41,18 @@ vendors.get("/bycuisine/:type", async (req, res) => {
     }
 })
 
-vendors.get("/:borough", async (req, res) => {
-    const {borough} = req.params;
+vendors.get("/:id", async (req, res) => {
+    const { id } = req.params;
+    const vendor = await getOneVendor(id);
+    if (vendor) {
+        res.status(200).json(vendor);
+    } else {
+        res.status(404).json({error: "no vendor found"});
+    }
+})
+
+vendors.get("/location/:borough", async (req, res) => {
+    const { borough } = req.params;
     const vendorsByBorough = await getVendorsByBorough(borough);
     if(vendorsByBorough[0]){
         res.status(200).json(vendorsByBorough)
@@ -51,7 +61,7 @@ vendors.get("/:borough", async (req, res) => {
     }
 })
 
-vendors.get("/:borough/:neighborhood", async (req, res) => {
+vendors.get("/location/:borough/:neighborhood", async (req, res) => {
     const {borough, neighborhood} = req.params;
     const vendorsByNeighborhood = await getVendorsByNeighborhood(borough, neighborhood);
     if(vendorsByNeighborhood[0]){
@@ -60,5 +70,6 @@ vendors.get("/:borough/:neighborhood", async (req, res) => {
         res.status(404).json({error: "no vendors found"});
     }
 })
+
 
 module.exports = vendors;
