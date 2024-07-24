@@ -1,12 +1,12 @@
--- delete any database with name of vendors_dev
 
-DROP DATABASE IF EXISTS vendors_prod;
 
--- create a new database with name of vendors_dev
-CREATE DATABASE vendors_prod;
+DROP DATABASE IF EXISTS streetbites;
 
--- connect to vendors_dev
-\c vendors_prod;
+
+CREATE DATABASE streetbites;
+
+
+\c streetbites;
 
 CREATE TABLE
     vendors 

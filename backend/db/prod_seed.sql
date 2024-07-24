@@ -1,5 +1,5 @@
--- connect to database
-\c vendors_prod;
+
+\c streetbites;
 
 INSERT INTO
     vendors
