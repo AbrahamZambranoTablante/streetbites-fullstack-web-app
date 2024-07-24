@@ -1,0 +1,6 @@
+.navbar__links {
+    display:flex;
+    p {
+        margin:2px 7px;
+    }
+}
