@@ -1,5 +1,4 @@
 
-
 export default function Home () {
 
     return (
@@ -15,9 +14,20 @@ export default function Home () {
                 <div className="home__locationForm">
                     <form action="">
                         <label htmlFor="borough">
+                            Select A Borough
                         </label>
                         <select name="" id="borough">
-
+                            <option></option>
+                            <option value="manhattan">Manhattan</option>
+                            <option value="brooklyn">Brooklyn</option>
+                            <option value="queens">Queens</option>
+                            <option value="bronx">Bronx</option>
+                            <option value="statenisland">Staten Island</option>
+                        </select>
+                        <label htmlFor="neighborhood">
+                            Select A Neighborhood
+                        </label>
+                        <select name="" id="neighborhood">
                         </select>
                     </form>
                 </div>
