@@ -3,7 +3,7 @@ const vendors = express.Router();
 const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor, deleteVendor } = require("../query/vendor.js");
 const { getAveragePrice } = require("./helperFunctions.js")
 
-vendors.get("/", async (req, res) => {
+vendors.get("/bycuisine", async (req, res) => {
     const allVendors = await getAllVendors();
     if(allVendors[0]){
         res.status(200).json(allVendors);
