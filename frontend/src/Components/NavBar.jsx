@@ -15,7 +15,7 @@ export default function NavBar () {
                 <Link to="/vendors/cheapest">
                     <p className="navbar__links-cheapest">Cheapest</p>
                 </Link>
-                <Link to="/vendors/bycuisine">
+                <Link to="/vendors/bycuisine/allcuisine">
                     <p className="navbar__links-bycuisine">Find By Cuisine</p>
                 </Link>
                 <Link to="/vendors/new">

@@ -6,35 +6,42 @@ import Vendor from './Vendor'
 
 
 export default function Vendors () {
-    const { selection } = useParams();
+
+    const { selection, cuisine, neighborhood, borough } = useParams();
+
     const [vendors, setVendors] = useState([]);
 
     let navigate = useNavigate();
 
-    const [byCuisine, setByCuisine] = useState("");
+    let URL;
 
+    if (neighborhood) {
+        URL = `${API}/vendors/location/${borough}/${neighborhood}`
+    } else if (borough) {
+        URL = `${API}/vendors/location/${borough}`
+    } else if (cuisine) {
+        if (cuisine === "allcuisine") {
+            URL = `${API}/vendors/${selection}`
+        } else {
+            URL = `${API}/vendors/${selection}/${cuisine}`
+        }
+    } else {
+            URL = `${API}/vendors/${selection}`
+    }
 
+    console.log(URL)
 
     useEffect(() => {
-        fetch(`${API}/vendors/${selection}`)
+        fetch(URL)
         .then(res => res.json())
         .then(resJSON => setVendors(resJSON))
         .catch(error => {
             console.error(error)
         })
-    }, [selection])
-
-    useEffect(() => {
-        fetch(`${API}/vendors/bycuisine/${byCuisine}`)
-        .then(res => res.json())
-        .then(resJSON => setVendors(resJSON))
-        .catch(error => {
-            console.error(error)
-        })
-    }, [byCuisine])
+    }, [URL])
 
     function handleCuisineChange (e) {
-        setByCuisine(e.target.value)
+        navigate(`/vendors/${selection}/${e.target.value}`)
     }
 
     return (

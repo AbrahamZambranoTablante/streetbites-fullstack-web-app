@@ -19,10 +19,10 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home/>}/>
-          <Route path="/vendors/:selection/:cuisine" element={<Index/>}/>
           <Route path="/vendors/:selection" element={<Index/>}/>
-          <Route path="/vendors/location/:borough" element={<Index/>}/>
-          <Route path="/vendors/location/:borough/:neighborhood" element={<Index/>}/>
+          <Route path="/vendors/:selection/:cuisine" element={<Index/>}/>
+          <Route path="/vendors/:selection/:borough" element={<Index/>}/>
+          <Route path="/vendors/:selection/:borough/:neighborhood" element={<Index/>}/>
           <Route path="/vendors/new" element={<New/>}/>
           <Route path="/vendors/:id/edit" element={<Edit/>}/>
           <Route path="/vendors/:id" element={<Show/>}/>
