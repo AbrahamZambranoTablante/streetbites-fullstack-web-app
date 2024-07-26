@@ -31,9 +31,9 @@ vendors.get("/cheapest", async (req, res) => {
     }
 })
 
-vendors.get("/bycuisine/:type", async (req, res) => {
-    const {type} = req.params;
-    const vendorsByCuisine = await getVendorsByCuisine(type);
+vendors.get("/bycuisine/:cuisine", async (req, res) => {
+    const {cuisine} = req.params;
+    const vendorsByCuisine = await getVendorsByCuisine(cuisine);
     if(vendorsByCuisine[0]){
         res.status(200).json(vendorsByCuisine);
     } else {
