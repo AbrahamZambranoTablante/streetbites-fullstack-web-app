@@ -41,7 +41,7 @@ vendors.get("/bycuisine/:cuisine", async (req, res) => {
     }
 })
 
-vendors.get("/:id", async (req, res) => {
+vendors.get("/details/:id", async (req, res) => {
     const { id } = req.params;
     const vendor = await getOneVendor(id);
     if (vendor) {
@@ -76,7 +76,7 @@ vendors.post("/new", async (req, res) => {
     res.status(200).json(incomingVendor)
 })
 
-vendors.put("/:id/edit", async (req, res) => {
+vendors.put("/details/:id/edit", async (req, res) => {
     const { id } = req.params;
     try {
         const updatedVendor = await updateVendor(id, req.body);
@@ -86,7 +86,7 @@ vendors.put("/:id/edit", async (req, res) => {
     }
 })
 
-vendors.delete("/:id", async (req, res) => {
+vendors.delete("/details/:id", async (req, res) => {
     const { id } = req.params;
     const removedVendor = await deleteVendor(id);
     if (removedVendor) {
