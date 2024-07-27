@@ -70,10 +70,17 @@ export default function EditVendorForm () {
                     <input id="cuisine" type="text" value={editVendor.cuisine} onChange={handleTextChange} className="form__input-field" /><br/>
                     <label htmlFor="address" className="">Address:</label><br/>
                     <input id="address" type="text" value={editVendor.address} onChange={handleTextChange} className="form__input-field" /><br/>
+                    <label htmlFor="borough" className="">Borough:</label><br/>
+                    <select id="borough" type="text" value={newVendor.borough} onChange={handleTextChange} className="form__input-field" > <br/>
+                        <option></option>
+                        <option value="Bronx">Bronx</option>
+                        <option value="Brooklyn">Brooklyn</option>
+                        <option value="Manhattan">Manhattan</option>
+                        <option value="Queens">Queens</option>
+                        <option value="Staten Island">Staten Island</option>
+                    </select><br/>
                     <label htmlFor="neighborhood" className="">Neighborhood:</label><br/>
                     <input id="neighborhood" type="text" value={editVendor.neighborhood} onChange={handleTextChange} className="form__input-field" /><br/>
-                    <label htmlFor="borough" className="">Borough:</label><br/>
-                    <input id="borough" type="text" value={editVendor.borough} onChange={handleTextChange} className="form__input-field" /><br/>
                     <label htmlFor="price_range" className="">Price Range:</label><br/>
                     <select id="price_range" type="text" value={editVendor.price_range} onChange={handleTextChange} className="form__input-field"><br/>
                         <option></option>

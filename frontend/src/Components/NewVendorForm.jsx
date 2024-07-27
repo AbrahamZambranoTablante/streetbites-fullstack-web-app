@@ -60,10 +60,17 @@ export default function NewVendorForm () {
                     <input id="cuisine" type="text" value={newVendor.cuisine} onChange={handleTextChange} className="form__input-field" /><br/>
                     <label htmlFor="address" className="">Address:</label><br/>
                     <input id="address" type="text" value={newVendor.address} onChange={handleTextChange} className="form__input-field" /><br/>
+                    <label htmlFor="borough" className="">Borough:</label><br/>
+                    <select id="borough" type="text" value={newVendor.borough} onChange={handleTextChange} className="form__input-field" > <br/>
+                        <option></option>
+                        <option value="Bronx">Bronx</option>
+                        <option value="Brooklyn">Brooklyn</option>
+                        <option value="Manhattan">Manhattan</option>
+                        <option value="Queens">Queens</option>
+                        <option value="Staten Island">Staten Island</option>
+                    </select><br/>
                     <label htmlFor="neighborhood" className="">Neighborhood:</label><br/>
                     <input id="neighborhood" type="text" value={newVendor.neighborhood} onChange={handleTextChange} className="form__input-field" /><br/>
-                    <label htmlFor="borough" className="">Borough:</label><br/>
-                    <input id="borough" type="text" value={newVendor.borough} onChange={handleTextChange} className="form__input-field" /><br/>
                     <label htmlFor="price_range" className="">Price Range:</label><br/>
                     <select id="price_range" type="text" value={newVendor.price_range} onChange={handleTextChange} className="form__input-field"><br/>
                         <option></option>
