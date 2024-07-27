@@ -58,8 +58,8 @@ export default function EditVendorForm () {
 
 
     return (
-<>
-            <h1>Update Vendor Info</h1>
+        <>
+            <h1>Update A Vendor</h1>
                 <form onSubmit={handleSubmit}>
                     <div className="form__inputs">
                     <div className="form__inputs-info">
