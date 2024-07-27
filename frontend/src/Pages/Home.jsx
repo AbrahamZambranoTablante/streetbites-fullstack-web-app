@@ -1,37 +1,52 @@
 import { useNavigate } from "react-router-dom"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const API = import.meta.env.VITE_API_URL;
-
-const neighborhoodData = {
-    "manhattan" : ["Chinatown", "Wall Street"],
-    "brooklyn" : ["Flatbush", "Bushwick"],
-    "queens" : ["Astoria", "Jackson Heights"],
-    "bronx": ["Harlem", "Washington Heights"],
-    "statenisland":["Stapleton", "Brighton Heights"]
-}
 
 export default function Home () {
 
     const [display, setDisplay] = useState("none")
-    const [borough, setBorough] = useState("")
+    const [neighborhoods, setNeighborhoods] = useState({})
+    const [neighborhoodsArray, setNeighborhoodsArray] = useState([])
+
+    useEffect(() => {
+        fetch(`${API}/vendors/bycuisine`)
+        .then(res => res.json())
+        .then(resJSON => {
+            let neighborhoodsData = {}
+            for (let i = 0; i < resJSON.length; i++) {
+                    let currentBorough = resJSON[i]["borough"]
+                    let currentNeighborhood = resJSON[i]["neighborhood"]
+                    if (neighborhoodsData[currentBorough]) {
+                        if (neighborhoodsData[currentBorough].includes(currentNeighborhood)){
+                        } else {
+                            neighborhoodsData[currentBorough].push(currentNeighborhood)
+                        }
+                    } else {
+                        neighborhoodsData[currentBorough] = [currentNeighborhood]
+                    }
+            }
+            setNeighborhoods({...neighborhoodsData})
+    })
+        .catch(error => {
+            console.error(error)
+        })
+    }, [])
 
     let navigate = useNavigate();
 
     function handleBoroughChange(event) {
-        if (event.target.value) {
-            setBorough(event.target.value)
+        const borough = event.target.value
+        if (borough) {
+            setNeighborhoodsArray(neighborhoods[borough])
             setDisplay("block")
         } else {
             setDisplay("none")
-            setBorough("")
         } 
     }
 
     function handleSubmit(event) {
         event.preventDefault()
-        console.log(event.target.borough.value)
-        console.log(event.target.neighborhood.value)
         if (event.target.neighborhood.value === "All Neighborhoods") {
             navigate(`/vendors/location/${event.target.borough.value}`)
         } else {
@@ -61,11 +76,11 @@ export default function Home () {
                             required
                         >
                             <option></option>
-                            <option value="manhattan">Manhattan</option>
-                            <option value="brooklyn">Brooklyn</option>
-                            <option value="queens">Queens</option>
-                            <option value="bronx">Bronx</option>
-                            <option value="statenisland">Staten Island</option>
+                            <option value="Manhattan">Manhattan</option>
+                            <option value="Brooklyn">Brooklyn</option>
+                            <option value="Queens">Queens</option>
+                            <option value="Bronx">Bronx</option>
+                            <option value="Statenisland">Staten Island</option>
                         </select>
                         <div style={{display: display}}>
                             <label htmlFor="neighborhood">
@@ -73,7 +88,7 @@ export default function Home () {
                             </label>
                             <select name="neighborhood" id="neighborhood">
                                 <option value="All Neighborhoods">All Neighborhoods</option>
-                                {borough ? neighborhoodData[borough].map(neighborhood => {
+                                {neighborhoodsArray[0] ? neighborhoodsArray.map(neighborhood => {
                                     return <option key={neighborhood} value={neighborhood}>{neighborhood}</option> 
                                 }) : ""}
                             </select>
