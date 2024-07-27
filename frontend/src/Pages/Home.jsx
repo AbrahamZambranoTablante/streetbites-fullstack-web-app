@@ -29,6 +29,7 @@ export default function Home () {
             setNeighborhoods({...neighborhoodsData})
     })
         .catch(error => {
+            navigate("/notfound")
             console.error(error)
         })
     }, [])
@@ -88,7 +89,7 @@ export default function Home () {
                             </label>
                             <select name="neighborhood" id="neighborhood">
                                 <option value="All Neighborhoods">All Neighborhoods</option>
-                                {neighborhoodsArray[0] ? neighborhoodsArray.map(neighborhood => {
+                                {neighborhoodsArray.length? neighborhoodsArray.map(neighborhood => {
                                     return <option key={neighborhood} value={neighborhood}>{neighborhood}</option> 
                                 }) : ""}
                             </select>

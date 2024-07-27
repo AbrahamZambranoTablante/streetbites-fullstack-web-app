@@ -33,9 +33,24 @@ export default function VendorDetails () {
         })
     }
 
-    function updateLikes() {
-        
+    function handleUpdateLikes() {
+        console.log(vendor.likes)
+        setVendor({...vendor, likes : vendor["likes"] + 1});
     }
+
+    useEffect(() => {
+        fetch(`${API}/vendors/details/${id}/edit`, {
+            method: "PUT",
+            body: JSON.stringify(vendor),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(() => {
+            navigate(`/vendors/details/${id}`)
+        })
+        .catch(error => console.error(error))
+    },[vendor.likes])
 
     return (
         <>
@@ -54,7 +69,7 @@ export default function VendorDetails () {
             </div>
             <div className="vendor__buttons">
             <button onClick={()=>(navigate(`/vendors/details/${id}/edit`))}>Update</button>
-            <button onClick={updateLikes}>Like</button>
+            <button onClick={handleUpdateLikes} id="likes">Like</button>
             <button onClick={handleDelete}>Delete</button>
             </div>
         </>
