@@ -1,7 +1,8 @@
+import EditVendorForm from "../Components/EditVendorForm"
 export default function Edit () {
     return (
         <>
-            <h1>THIS IS EDIT</h1>
+            <EditVendorForm />
         </>
     )
 }
