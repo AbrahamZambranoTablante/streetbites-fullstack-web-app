@@ -15,8 +15,8 @@ export default function NewVendorForm () {
         borough: "",
         description: "",
         price_range: "",
-        menu_photo: "",
-        vendor_photo: "",
+        menu_photo: "/default-menu.png",
+        vendor_photo: "/default-profile-pic.jpeg",
         vegan: false,
         likes: 0
     })
@@ -61,7 +61,7 @@ export default function NewVendorForm () {
                         <label htmlFor="cuisine" className="">Cuisine:</label><br/>
                             <input id="cuisine" type="text" value={newVendor.cuisine} onChange={handleTextChange} className="form__input-field" /><br/>
                         <label htmlFor="vegan" className="form__inputs-info-vegan">Vegan:</label><br />
-                            <input id="vegan" type="checkbox" value={newVendor.vegan} onChange={handleCheckBox} className="form__input-field-vegan" /><br/>
+                            <input id="vegan" type="checkbox" value={newVendor.vegan} onChange={handleCheckBox} className="form__input-field" /><br/>
                     </div>
                     <div className="form__inputs-area">
                         <label htmlFor="address" className="">Address:</label><br/>

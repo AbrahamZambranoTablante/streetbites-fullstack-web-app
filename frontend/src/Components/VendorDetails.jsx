@@ -58,17 +58,21 @@ export default function VendorDetails () {
         <>
             <div className="vendor__details">
                 <div className="vendor__details-image">
-                <img src="" alt="" />
+                    <img src={vendor.vendor_photo} alt="vendor-photo" className="vendor-profile-pic" />
                 </div>
                 <div className="vendor__details-info">
-                <h1>{vendor.name}</h1>
-                <h2 className="">{vendor.cuisine}</h2>
-                <h2 className="">{vendor.address}</h2>
-                {like ? <i className="fa-solid fa-thumbs-up"></i> : <i className="fa-regular fa-thumbs-up"></i>}
-                <p>{vendor.likes}</p>
+                    <h2>{vendor.name}</h2>
+                    <p className="">{vendor.cuisine}</p>
+                    <p className="">{vendor.address}</p>
+                    <p className="">{vendor.phone}</p>
+                    <p className="">{vendor.description}</p>
+                    <p className="">{vendor.price_range}</p>
+                    <p className="">{vendor.vegan === true ? "Vegan" : null}</p>
+                    {like ? <i className="fa-solid fa-thumbs-up"></i> : <i className="fa-regular fa-thumbs-up"></i>}
+                    <p>{vendor.likes}</p>
                 </div>
                 <div className="vendor__details-menu">
-                <img src="" alt="" />
+                    <img src={vendor.menu_photo} alt="menu-photo" className="menu-pic"/>
                 </div>
             </div>
             <div className="vendor__buttons">

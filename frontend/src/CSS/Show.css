@@ -1,3 +1,16 @@
-.vendor__details-info {
-    color: #FD6868;
+.vendor__details {
+    display:flex;
+}
+
+.vendor-profile-pic {
+    margin: 100px 70px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+}
+
+.menu-pic {
+    width: 150px;
+    height: 300px;
+    margin: 70px;
 }
