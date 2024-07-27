@@ -1,9 +1,10 @@
 import React from "react"
 import { useEffect, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom";
-const API = import.meta.env.VITE_API_URL;
 import Vendor from './Vendor'
+import "../CSS/Vendors.css"
 
+const API = import.meta.env.VITE_API_URL;
 
 export default function Vendors () {
 
@@ -47,6 +48,23 @@ export default function Vendors () {
 
     return (
         <>
+                {
+                    selection === "bycuisine" ?
+                    <div className="dropdown">
+                        <h3>Choose A Cuisine</h3>
+                        <label htmlFor="cuisine" className=""></label>
+                        <select id="cuisine" name='cuisine' onChange={handleCuisineChange}>
+                            <option></option>
+                            <option value='mexican'>Mexican</option>
+                            <option value='chinese'>Chinese</option>
+                            <option value='colombian'>Colombian</option>
+                            <option value='greek'>Greek</option>
+                            <option value='peruvian'>Peruvian</option>
+                        </select>
+                    </div> 
+                : 
+                null
+                }
             <div className="vendors">
                 {vendors.length ?
                     vendors.map(vendor => {
@@ -54,22 +72,6 @@ export default function Vendors () {
                     })
                 : <h1>No Vendors Found</h1>}
             </div>
-            {
-                selection === "bycuisine" ?
-                <div className="dropdown">
-                    <label htmlFor="cuisine" className=""></label>
-                    <select id="cuisine" name='cuisine' onChange={handleCuisineChange}>
-                        <option></option>
-                        <option value='mexican'>Mexican</option>
-                        <option value='chinese'>Chinese</option>
-                        <option value='colombian'>Colombian</option>
-                        <option value='greek'>Greek</option>
-                        <option value='peruvian'>Peruvian</option>
-                    </select>
-                </div> 
-            : 
-            null
-            }
         </>
     )
 }

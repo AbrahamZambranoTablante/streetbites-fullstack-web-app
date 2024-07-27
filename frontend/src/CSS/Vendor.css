@@ -1,0 +1,47 @@
+.vendor {
+    padding: 10px 20px 10px 10px;
+    width: max-content;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-decoration: none;
+    span {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    img {   
+        padding:10px;
+        margin-right: 20px;
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+    .vendor__img {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    }
+    
+    .vendor__details{
+        margin: auto;
+        width: max-content;
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+    
+        p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+    .vendor__name {
+        font-size: large;
+        font-weight: 900;
+    }
+    .vendor__cuisine {
+        font-size: small;
+        font-weight: 100;
+    }
+}

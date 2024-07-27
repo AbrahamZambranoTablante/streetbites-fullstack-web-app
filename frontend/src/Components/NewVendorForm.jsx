@@ -55,19 +55,19 @@ export default function NewVendorForm () {
                     <div className="form__inputs">
                     <div className="form__inputs-info">
                         <label htmlFor="name" className="">Name:</label><br/>
-                            <input id="name" type="text" value={newVendor.name} onChange={handleTextChange} className="form__input-field" /><br/>
+                            <input id="name" type="text" value={newVendor.name} onChange={handleTextChange} className="form__input-field" required/><br/>
                         <label htmlFor="phone" className="">Phone:</label><br/>
                             <input id="phone" type="text" value={newVendor.phone} onChange={handleTextChange} className="form__input-field" /><br/>
                         <label htmlFor="cuisine" className="">Cuisine:</label><br/>
-                            <input id="cuisine" type="text" value={newVendor.cuisine} onChange={handleTextChange} className="form__input-field" /><br/>
+                            <input id="cuisine" type="text" value={newVendor.cuisine} onChange={handleTextChange} className="form__input-field" required/><br/>
                         <label htmlFor="vegan" className="form__inputs-info-vegan">Vegan:</label><br />
                             <input id="vegan" type="checkbox" value={newVendor.vegan} onChange={handleCheckBox} className="form__input-field-vegan" /><br/>
                     </div>
                     <div className="form__inputs-area">
                         <label htmlFor="address" className="">Address:</label><br/>
-                            <input id="address" type="text" value={newVendor.address} onChange={handleTextChange} className="form__input-field" /><br/>
+                            <input id="address" type="text" value={newVendor.address} onChange={handleTextChange} className="form__input-field" required/><br/>
                         <label htmlFor="borough" className="">Borough:</label><br/>
-                            <select id="borough" type="text" value={newVendor.borough} onChange={handleTextChange} className="form__input-field" >
+                            <select id="borough" type="text" value={newVendor.borough} onChange={handleTextChange} className="form__input-field" required>
                                 <option></option>
                                 <option value="Bronx">Bronx</option>
                                 <option value="Brooklyn">Brooklyn</option>
@@ -76,12 +76,12 @@ export default function NewVendorForm () {
                                 <option value="Staten Island">Staten Island</option>
                             </select><br/>
                         <label htmlFor="neighborhood" className="">Neighborhood:</label><br/>
-                            <input id="neighborhood" type="text" value={newVendor.neighborhood} onChange={handleTextChange} className="form__input-field" /><br/>
+                            <input id="neighborhood" type="text" value={newVendor.neighborhood} onChange={handleTextChange} className="form__input-field" required/><br/>
                         <button type="submit">Add</button>
                     </div>
                     <div className="form__inputs-data">
                         <label htmlFor="price_range" className="">Price Range:</label><br/>
-                        <select id="price_range" type="text" value={newVendor.price_range} onChange={handleTextChange} className="form__input-field">
+                        <select id="price_range" type="text" value={newVendor.price_range} onChange={handleTextChange} className="form__input-field" required>
                             <option></option>
                             <option value="$1-5">$1-5</option>
                             <option value="$1-10">$1-10</option>

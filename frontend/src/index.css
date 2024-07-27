@@ -17,6 +17,10 @@ a:hover {
   color: #F4CF5D;
 }
 
+a {
+  text-decoration: inherit;
+}
+
 body {
   margin: 0;
   display: flex;
