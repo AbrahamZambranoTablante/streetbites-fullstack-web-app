@@ -23,7 +23,7 @@ export default function EditVendorForm () {
     });
 
     useEffect(() => {
-        fetch(`${API}/vendors/${id}`)
+        fetch(`${API}/vendors/details/${id}`)
         .then(res => res.json())
         .then(resJSON => setEditVendor(resJSON))
         .catch(error => console.error(error))
@@ -38,7 +38,7 @@ export default function EditVendorForm () {
     }
 
     function updateVendor () {
-        fetch(`${API}/vendors/${id}/edit`, {
+        fetch(`${API}/vendors/details/${id}/edit`, {
             method: "PUT",
             body: JSON.stringify(editVendor),
             headers: {
@@ -46,7 +46,7 @@ export default function EditVendorForm () {
             }
         })
         .then(() => {
-            navigate(`/vendors/${id}`)
+            navigate(`/vendors/details/${id}`)
         })
         .catch(error => console.error(error))
     }
