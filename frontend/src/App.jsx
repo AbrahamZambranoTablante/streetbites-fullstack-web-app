@@ -24,8 +24,8 @@ function App() {
           <Route path="/vendors/:selection/:borough" element={<Index/>}/>
           <Route path="/vendors/:selection/:borough/:neighborhood" element={<Index/>}/>
           <Route path="/vendors/new" element={<New/>}/>
-          <Route path="/vendors/:id/edit" element={<Edit/>}/>
-          <Route path="/vendors/:id" element={<Show/>}/>
+          <Route path="/vendors/details/:id" element={<Show/>}/>
+          <Route path="/vendors/details/:id/edit" element={<Edit/>}/>
           <Route path="/about" element={<About/>}/>
           <Route path="*" element={<Error/>}/>
         </Routes>
