@@ -7,6 +7,7 @@ export default function VendorDetails () {
     const { id } = useParams()
 
     const [vendor, setVendor] = useState({})
+    const [like, setLikes] = useState(false)
 
     let navigate = useNavigate()
 
@@ -35,6 +36,7 @@ export default function VendorDetails () {
 
     function handleUpdateLikes() {
         console.log(vendor.likes)
+        setLikes(true)
         setVendor({...vendor, likes : vendor["likes"] + 1});
     }
 
@@ -62,6 +64,8 @@ export default function VendorDetails () {
                 <h1>{vendor.name}</h1>
                 <h2 className="">{vendor.cuisine}</h2>
                 <h2 className="">{vendor.address}</h2>
+                {like ? <i className="fa-solid fa-thumbs-up"></i> : <i className="fa-regular fa-thumbs-up"></i>}
+                <p>{vendor.likes}</p>
                 </div>
                 <div className="vendor__details-menu">
                 <img src="" alt="" />
