@@ -1,15 +1,25 @@
 import { Link } from "react-router-dom";
+import "../CSS/Vendor.css"
 
 export default function Vendor ({vendor}) {
 
-    const { name, cuisine, address, id } = vendor;
+    const { name, cuisine, neighborhood, id, likes, price_range, vendor_photo } = vendor;
 
     return (
         <Link to={`/vendors/details/${id}`}>
             <div className="vendor">
-                <h1 className="">{name}</h1>
-                <h2 className="">{cuisine}</h2>
-                <h2 className="">{address}</h2>
+                <div className="vendor__img">
+                    <span>
+                        <img src={vendor_photo} alt={name} />
+                    </span>
+                </div>
+                <div className="vendor__details">
+                    <p className="vendor__name">{name}</p>
+                    <p className="vendor__cusine">{cuisine}</p>
+                    <p className="">{neighborhood}</p>
+                    <p><i className="fa-regular fa-thumbs-up"></i> {likes}</p>
+                    <p>{price_range}</p>
+                </div>
             </div>
         </Link>
     )
