@@ -84,4 +84,4 @@ const deleteVendor = async (id) => {
     }
 }
 
-module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor, deleteVendor }
+module.exports = { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor, deleteVendor, updateVendorLikes}
