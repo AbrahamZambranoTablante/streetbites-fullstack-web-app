@@ -20,6 +20,23 @@ export default function VendorDetails () {
         })
     }, [id, navigate])
 
+    function handleDelete() {
+        fetch(`${API}/vendors/details/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => {
+            navigate(`/vendors/bycuisine`)
+        })
+        .catch(() => {
+            navigate("/notfound")
+            console.error(error)
+        })
+    }
+
+    function updateLikes() {
+        
+    }
+
     return (
         <>
             <div className="vendor__details">
@@ -27,16 +44,18 @@ export default function VendorDetails () {
                 <img src="" alt="" />
                 </div>
                 <div className="vendor__details-info">
-                <p>{vendor.name}</p>
+                <h1>{vendor.name}</h1>
+                <h2 className="">{vendor.cuisine}</h2>
+                <h2 className="">{vendor.address}</h2>
                 </div>
                 <div className="vendor__details-menu">
                 <img src="" alt="" />
                 </div>
             </div>
             <div className="vendor__buttons">
-            <button>Update</button>
-            <button>Like</button>
-            <button>Delete</button>
+            <button onClick={()=>(navigate(`/vendors/details/${id}/edit`))}>Update</button>
+            <button onClick={updateLikes}>Like</button>
+            <button onClick={handleDelete}>Delete</button>
             </div>
         </>
     )

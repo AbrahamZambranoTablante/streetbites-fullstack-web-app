@@ -1,6 +1,6 @@
 const express = require("express");
 const vendors = express.Router();
-const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor, deleteVendor } = require("../query/vendor.js");
+const { getAllVendors, getTopFavorites, getVendorsByCuisine, getVendorsByBorough, getVendorsByNeighborhood, getOneVendor, createVendor, updateVendor, deleteVendor, updateVendorLikes } = require("../query/vendor.js");
 const { getAveragePrice } = require("./helperFunctions.js")
 
 vendors.get("/bycuisine", async (req, res) => {
