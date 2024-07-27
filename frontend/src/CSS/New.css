@@ -1,0 +1,33 @@
+.form__inputs {
+    font-size: x-large;
+    font-weight: 700;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 10px;
+    input {
+        padding: 5px;
+    }
+    option {
+        padding: 5px;
+    }
+}
+.form__inputs-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 1/2;
+}
+.form__inputs-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 2/3;
+}
+.form__inputs-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 3;
+}
