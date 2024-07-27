@@ -44,7 +44,11 @@ vendors.get("/bycuisine/:cuisine", async (req, res) => {
 vendors.get("/details/:id", async (req, res) => {
     const { id } = req.params;
     const vendor = await getOneVendor(id);
-    if (vendor) {
+    if (vendor.received === 0) {
+        res.status(404).send("Page not found");
+    } else if (vendor.name === "error") {
+        res.status(404).send("Page not found");
+    } else if (vendor) { 
         res.status(200).json(vendor);
     } else {
         res.status(404).json({error: "no vendor found"});
