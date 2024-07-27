@@ -2,6 +2,13 @@
     display:flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 2px solid #FD6868;
+
+    a {
+        font-weight: 500;
+        color: #FD6868;
+        text-decoration: inherit;
+    } 
     
     p {
         margin:2px 7px;

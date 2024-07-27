@@ -2,7 +2,20 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top: 2px solid #FD6868;;
+
+    a {
+        font-weight: 500;
+        color: #FD6868;
+        text-decoration: inherit;
+    } 
+
     p {
         margin: 2px 7px;
+        color: #FD6868; 
+    }
+
+    a:hover {
+        color: #F4CF5D;
     }
 }

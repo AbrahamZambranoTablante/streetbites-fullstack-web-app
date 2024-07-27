@@ -5,11 +5,11 @@ export default function Footer () {
     return (
         <footer>
             <Link to="https://github.com/AbrahamZambranoTablante/streetbites-fullstack-web-app">
-                <p>Source Code</p>
+                <a>Source Code</a>
             </Link>
                 <p>All Rights Reserved 2024</p>
             <Link to="/about">
-                <p>About</p>
+                <a>About</a>
             </Link>
         </footer>
     )

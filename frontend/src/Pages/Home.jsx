@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react";
+import '../CSS/Home.css'
 
 const API = import.meta.env.VITE_API_URL;
 
@@ -58,18 +59,14 @@ export default function Home () {
     return (
         <>
             <div className="home-container">
-                <div className="home__title">
-                    <h1>Street Bites</h1>
-                </div>
                 <div className="home__logo">
-                    <img src="https://yt3.googleusercontent.com/bcuWJYLswS-Xks91LsWiboQLQt1vPATQ7HybqU-oajLvGQ6fC0EbICgF5XlOst0VXh_lNYus_HE=s900-c-k-c0x00ffffff-no-rj
-" alt="logo" />
+                    <img src="/Street-Bites.png" alt="logo" className="logo-img"/>
                 </div>
                 <div className="home__locationForm">
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="borough">
                             Select A Borough
-                        </label>
+                        </label><br/>
                         <select 
                             name="borough" 
                             id="borough"
@@ -82,17 +79,17 @@ export default function Home () {
                             <option value="Queens">Queens</option>
                             <option value="Bronx">Bronx</option>
                             <option value="Statenisland">Staten Island</option>
-                        </select>
+                        </select><br/>
                         <div style={{display: display}}>
                             <label htmlFor="neighborhood">
                                 Select A Neighborhood
-                            </label>
+                            </label><br/>
                             <select name="neighborhood" id="neighborhood">
                                 <option value="All Neighborhoods">All Neighborhoods</option>
                                 {neighborhoodsArray.length? neighborhoodsArray.map(neighborhood => {
                                     return <option key={neighborhood} value={neighborhood}>{neighborhood}</option> 
                                 }) : ""}
-                            </select>
+                            </select><br/>
                         </div>
                         <button type="submit">Search</button>
                     </form>
