@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, Link } from "react-router-dom"
 const API = import.meta.env.VITE_API_URL
 
 export default function VendorDetails () {
@@ -74,7 +74,9 @@ export default function VendorDetails () {
                     <p>{vendor.likes}</p>
                 </div>
                 <div className="vendor__details-menu">
-                    <img src={vendor.menu_photo} alt="menu-photo" className="menu-pic"/>
+                    <Link to={vendor.menu_photo}>
+                        <img src={vendor.menu_photo} alt="menu-photo" className="menu-pic"/>
+                    </Link>
                 </div>
             </div>
             <div className="vendor__buttons">
