@@ -104,7 +104,7 @@ export default function EditVendorForm () {
                         <label htmlFor="vendor_photo" className="">Vendor Photo:</label><br/>
                             <input id="vendor_photo" type="text" value={editVendor.vendor_photo} onChange={handleTextChange} className="form__input-field" /><br/>
                         <label htmlFor="description" className="">Vendor Description:</label><br/>
-                            <p className="char-counter">{newVendor.description.length}</p>
+                            <p className="char-counter">{editVendor.description.length}</p>
                             <textarea id="description" maxlength ="150" value={editVendor.description} rows="3" cols="30" onChange={handleTextChange} className="form__input-field" /><br/>
                     </div>
                     </div>
