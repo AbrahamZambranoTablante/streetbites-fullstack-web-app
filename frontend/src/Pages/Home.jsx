@@ -9,6 +9,7 @@ export default function Home () {
     const [display, setDisplay] = useState("none")
     const [neighborhoods, setNeighborhoods] = useState({})
     const [neighborhoodsArray, setNeighborhoodsArray] = useState([])
+    const [haveVendors, setHaveVendors] = useState("none")
 
     useEffect(() => {
         fetch(`${API}/vendors/bycuisine`)
@@ -39,10 +40,12 @@ export default function Home () {
 
     function handleBoroughChange(event) {
         const borough = event.target.value
-        if (borough) {
+        if (neighborhoods[borough]) {
             setNeighborhoodsArray(neighborhoods[borough])
             setDisplay("block")
+            setHaveVendors("none")
         } else {
+            setHaveVendors("block")
             setDisplay("none")
         } 
     }
@@ -91,6 +94,9 @@ export default function Home () {
                                 }) : ""}
                             </select><br/>
                         </div>
+                        <span style={{display:haveVendors}}>
+                            <p>No vendors found in this Borough</p>
+                        </span>
                         <button type="submit">Search</button>
                     </form>
                 </div>

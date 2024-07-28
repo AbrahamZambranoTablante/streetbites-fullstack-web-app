@@ -8,6 +8,8 @@ export default function VendorDetails () {
 
     const [vendor, setVendor] = useState({})
     const [like, setLikes] = useState(false)
+    const [confirmDelete, setConfirmDelete] = useState(false)
+    const [confirmUpdate, setConfirmUpdate] = useState(false)
 
     let navigate = useNavigate()
 
@@ -35,7 +37,6 @@ export default function VendorDetails () {
     }
 
     function handleUpdateLikes() {
-        console.log(vendor.likes)
         setLikes(true)
         setVendor({...vendor, likes : vendor["likes"] + 1});
     }
@@ -78,7 +79,17 @@ export default function VendorDetails () {
             <div className="vendor__buttons">
             <button onClick={()=>(navigate(`/vendors/details/${id}/edit`))}>Update</button>
             <button onClick={handleUpdateLikes} id="likes">Like</button>
-            <button onClick={handleDelete}>Delete</button>
+            <div className="delete__button">
+            {confirmDelete ? 
+                <div>
+                <span>Are you sure?</span>
+                <div>
+                <button onClick={handleDelete}>Yes, Delete</button> 
+                <button onClick={() => setConfirmDelete(false)}>No, Nevermind</button>
+                </div>
+                </div>
+                : <button onClick={() => setConfirmDelete(true)}>Delete This Vendor</button>}
+            </div>
             </div>
         </>
     )
