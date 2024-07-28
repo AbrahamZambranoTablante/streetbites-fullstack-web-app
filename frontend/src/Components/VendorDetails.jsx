@@ -90,7 +90,7 @@ export default function VendorDetails () {
                 <button onClick={() => setConfirmDelete(false)}>No, Nevermind</button>
                 </div>
                 </div>
-                : <button onClick={() => setConfirmDelete(true)}>Delete This Vendor</button>}
+                : <button onClick={() => setConfirmDelete(true)}>Delete Vendor</button>}
             </div>
             </div>
         </>
