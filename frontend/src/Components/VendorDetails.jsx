@@ -66,7 +66,9 @@ export default function VendorDetails () {
                     <p className="">{vendor.cuisine}</p>
                     <p className="">{vendor.address}</p>
                     <p className="">{vendor.phone}</p>
-                    <p className="">{vendor.description}</p>
+                    <div className="description-container">
+                        <p className="">{vendor.description}</p>
+                    </div>
                     <p className="">{vendor.price_range}</p>
                     <p className="">{vendor.vegan === true ? "Vegan" : null}</p>
                     {like ? <i className="fa-solid fa-thumbs-up"></i> : <i className="fa-regular fa-thumbs-up"></i>}
