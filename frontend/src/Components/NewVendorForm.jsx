@@ -38,7 +38,7 @@ export default function NewVendorForm () {
             }
         })
         .then(() => {
-            navigate(`/vendors/details/${newVendor.id}`)
+            navigate(`/vendors/bycuisine`)
         })
         .catch(error => console.error(error))
     }
