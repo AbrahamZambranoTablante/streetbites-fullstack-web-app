@@ -41,3 +41,8 @@
 .form__inputs-info-vegan {
     background-color: #FDF9F5;
 }
+
+.char-counter {
+    font-size: 15px;
+    margin-top: -40px;
+}

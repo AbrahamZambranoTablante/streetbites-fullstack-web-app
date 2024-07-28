@@ -4,6 +4,9 @@ import "../CSS/New.css"
 
 export default function NewVendorForm () {
 
+    const defaultMenuPic = "/default-menu.png"
+    const defaultProfilePic = "/default-profile-pic.jpeg"
+
     const navigate = useNavigate();
     const API = import.meta.env.VITE_API_URL;
     const [newVendor, setNewVendor] = useState({
@@ -15,8 +18,8 @@ export default function NewVendorForm () {
         borough: "",
         description: "",
         price_range: "",
-        menu_photo: "/default-menu.png",
-        vendor_photo: "/default-profile-pic.jpeg",
+        menu_photo: "",
+        vendor_photo: "",
         vegan: false,
         likes: 0
     })
@@ -32,7 +35,7 @@ export default function NewVendorForm () {
     function createNewVendor () {
         fetch(`${API}/vendors/new`, {
             method: "POST",
-            body: JSON.stringify(newVendor),
+            body: JSON.stringify({...newVendor, menu_photo: newVendor.menu_photo ? newVendor.menu_photo : defaultMenuPic, vendor_photo: newVendor.vendor_photo ? newVendor.vendor_photo : defaultProfilePic}),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -95,7 +98,8 @@ export default function NewVendorForm () {
                         <label htmlFor="vendor_photo" className="">Vendor Photo:</label><br/>
                             <input id="vendor_photo" type="text" value={newVendor.vendor_photo} onChange={handleTextChange} className="form__input-field" /><br/>
                         <label htmlFor="description" className="">Vendor Description:</label><br/>
-                            <textarea id="description" value={newVendor.description} rows="3" cols="30" onChange={handleTextChange} className="form__input-field" /><br/>
+                            <p className="char-counter">{newVendor.description.length}</p>
+                            <textarea id="description" maxlength ="150" value={newVendor.description} rows="3" cols="30" onChange={handleTextChange} className="form__input-field" /><br/>
                     </div>
                     </div>
                 </form>
