@@ -58,7 +58,7 @@ const getOneVendor = async (id) => {
 const createVendor = async (vendor) => {
     const { name, phone, cuisine, address, neighborhood, borough, description, price_range, menu_photo, vendor_photo, vegan, likes } = vendor
     try {
-        const incomingVendor = await db.one("INSERT INTO vendors (name, phone, cuisine, address, neighborhood, borough, description, price_range, menu_photo, vendor_photo, vegan, likes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)", [name, phone, cuisine, address, neighborhood, borough, description, price_range, menu_photo, vendor_photo, vegan, likes])
+        const incomingVendor = await db.one("INSERT INTO vendors (name, phone, cuisine, address, neighborhood, borough, description, price_range, menu_photo, vendor_photo, vegan, likes) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING *", [name, phone, cuisine, address, neighborhood, borough, description, price_range, menu_photo, vendor_photo, vegan, likes])
         return incomingVendor
     } catch (error) {
         return error
