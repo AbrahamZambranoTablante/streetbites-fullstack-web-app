@@ -40,8 +40,10 @@ export default function NewVendorForm () {
                 "Content-Type": "application/json"
             }
         })
-        .then(() => {
-            navigate(`/vendors/bycuisine`)
+        .then(res => res.json())
+        .then((resJSON) => {
+            console.log(resJSON)
+            navigate(`/vendors/details/${resJSON.id}`)
         })
         .catch(error => console.error(error))
     }
