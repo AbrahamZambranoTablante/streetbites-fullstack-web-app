@@ -44,6 +44,16 @@
             margin-bottom: 0;
         }
     }
+
+    .vendor__name:hover {
+        color:#F4CF5D;
+    }
+
+    .other-info:hover {
+        color:#F4CF5D;
+    }
+
+
     .vendor__name {
         font-size: large;
         font-weight: 900;
