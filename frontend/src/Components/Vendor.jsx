@@ -15,10 +15,12 @@ export default function Vendor ({vendor}) {
                 </div>
                 <div className="vendor__details">
                     <p className="vendor__name">{name}</p>
-                    <p className="vendor__cusine">{cuisine}</p>
-                    <p className="">{neighborhood}</p>
-                    <p><i className="fa-regular fa-thumbs-up"></i> {likes}</p>
-                    <p>{price_range}</p>
+                    <div className="other-info">
+                        <p className="vendor__cusine">{cuisine}</p>
+                        <p className="">{neighborhood}</p>
+                        <p><i className="fa-regular fa-thumbs-up"></i> {likes}</p>
+                        <p>{price_range}</p>
+                    </div>
                 </div>
             </div>
         </Link>

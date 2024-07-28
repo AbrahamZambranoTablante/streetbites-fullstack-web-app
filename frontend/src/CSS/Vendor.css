@@ -30,6 +30,14 @@
         display: flex;
         flex-direction: column;
         align-items:flex-start;
+
+        .vendor__name {
+            color: #FD6868;
+        }
+
+        .other-info{
+            color:#B65200;
+        }
     
         p {
             margin-top: 0;
