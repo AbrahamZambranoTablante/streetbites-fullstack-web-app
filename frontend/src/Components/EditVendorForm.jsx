@@ -29,6 +29,8 @@ export default function EditVendorForm () {
         .catch(error => console.error(error))
     }, [])
 
+    console.log(editVendor.vegan)
+
     function handleTextChange (e) {
         setEditVendor({...editVendor, [e.target.id]: e.target.value});
     }
@@ -70,7 +72,7 @@ export default function EditVendorForm () {
                         <label htmlFor="cuisine" className="">Cuisine:</label><br/>
                             <input id="cuisine" type="text" value={editVendor.cuisine} onChange={handleTextChange} className="form__input-field" /><br/>
                         <label htmlFor="vegan" className="form__inputs-info-vegan">Vegan:</label><br />
-                            <input id="vegan" type="checkbox" value={editVendor.vegan} onChange={handleCheckBox} className="form__input-field-vegan" /><br/>
+                            <input id="vegan" type="checkbox" value={editVendor.vegan} onChange={handleCheckBox} className="form__input-field-vegan" checked={editVendor.vegan} /><br/>
                     </div>
                     <div className="form__inputs-area">
                         <label htmlFor="address" className="">Address:</label><br/>
