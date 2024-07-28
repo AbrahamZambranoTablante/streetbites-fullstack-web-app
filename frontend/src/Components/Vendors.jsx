@@ -30,7 +30,7 @@ export default function Vendors () {
             URL = `${API}/vendors/${selection}`
     }
 
-    console.log(URL)
+    const uniqueCuisine = [... new Set(vendors.map(vendor => vendor.cuisine))]
 
     useEffect(() => {
         fetch(URL)
@@ -55,11 +55,9 @@ export default function Vendors () {
                         <label htmlFor="cuisine" className=""></label>
                         <select id="cuisine" name='cuisine' onChange={handleCuisineChange}>
                             <option></option>
-                            <option value='mexican'>Mexican</option>
-                            <option value='chinese'>Chinese</option>
-                            <option value='colombian'>Colombian</option>
-                            <option value='greek'>Greek</option>
-                            <option value='peruvian'>Peruvian</option>
+                            {uniqueCuisine.length? uniqueCuisine.map(cuisine => {
+                                    return <option key={cuisine} value={cuisine}>{cuisine}</option> 
+                                }) : ""}
                         </select>
                     </div> 
                 : 

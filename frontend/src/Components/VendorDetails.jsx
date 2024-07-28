@@ -9,7 +9,6 @@ export default function VendorDetails () {
     const [vendor, setVendor] = useState({})
     const [like, setLikes] = useState(false)
     const [confirmDelete, setConfirmDelete] = useState(false)
-    const [confirmUpdate, setConfirmUpdate] = useState(false)
 
     let navigate = useNavigate()
 
