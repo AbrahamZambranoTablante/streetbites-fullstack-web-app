@@ -81,7 +81,7 @@ export default function Home () {
                             <option value="Brooklyn">Brooklyn</option>
                             <option value="Queens">Queens</option>
                             <option value="Bronx">Bronx</option>
-                            <option value="Statenisland">Staten Island</option>
+                            <option value="Staten Island">Staten Island</option>
                         </select><br/>
                         <div style={{display: display}}>
                             <label htmlFor="neighborhood">
